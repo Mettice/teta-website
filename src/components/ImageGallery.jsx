@@ -20,7 +20,7 @@ const ImageGallery = () => {
       description: 'Students showing their exceptional spirit'
     },
     {
-      url: '/assets/kids.jpg',
+      url: '/assets/kids3.jpg',
       title: 'Youth Activities',
       description: 'Engaging activities for personal development'
     },
