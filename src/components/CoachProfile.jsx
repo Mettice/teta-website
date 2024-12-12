@@ -14,7 +14,7 @@ const CoachProfile = () => {
           >
             <div className="aspect-[3/4] rounded-lg overflow-hidden bg-gray-100">
               <img 
-                src="/images/Coach.jpg"  // Note the capital C
+                src="https://teta-website-fjoe06crl-dions-projects-0087c2a0.vercel.app/images/Coach.jpg"
                 alt="Esandoah Beretilla Efuetngong" 
                 className="w-full h-full object-cover"
               />
