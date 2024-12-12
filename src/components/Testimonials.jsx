@@ -4,19 +4,19 @@ import { Star } from 'lucide-react'
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Sarah Johnson",
+      name: "Nkafu Thelma",
       role: "Student",
       content: "TETA Academy transformed my perspective on leadership and personal growth. The mentorship program gave me the confidence to pursue my dreams.",
       rating: 5
     },
     {
-      name: "Michael Chen",
+      name: "Fonkem Dion",
       role: "Parent",
-      content: "Seeing my daughter's growth through TETA's program has been incredible. The values and life skills she's learned are invaluable.",
+      content: "Seeing my Son's growth through TETA's program has been incredible. The values and life skills he's learned are invaluable.",
       rating: 5
     },
     {
-      name: "Emily Brown",
+      name: "Brianna",
       role: "Student",
       content: "The spiritual foundation combined with practical life skills makes TETA unique. I've grown so much in my faith and leadership abilities.",
       rating: 5
