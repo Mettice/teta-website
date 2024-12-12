@@ -1,47 +1,25 @@
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Book, Users, Heart, Star, Sprout, Award } from 'lucide-react';
-import coach from '../assets/Coach.jpg';
 
 const CoachProfile = () => {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  useEffect(() => {
-    // Preload coach image
-    const img = new Image();
-    img.src = coach;
-    img.onload = () => setImageLoaded(true);
-  }, []);
-
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Coach Image with loading state */}
+          {/* Coach Image */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             className="relative"
           >
             <div className="aspect-[3/4] rounded-lg overflow-hidden bg-gray-100">
-              {!imageLoaded && (
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
-                </div>
-              )}
-              <motion.img 
-                src={coach}
+              <img 
+                src="/images/Coach.jpg"  // Note the capital C
                 alt="Esandoah Beretilla Efuetngong" 
-                className={`w-full h-full object-cover transition-opacity duration-300 ${
-                  imageLoaded ? 'opacity-100' : 'opacity-0'
-                }`}
-                initial={{ scale: 1.1 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.5 }}
-                onLoad={() => setImageLoaded(true)}
+                className="w-full h-full object-cover"
               />
             </div>
-            {/* Decorative elements with motion */}
+            {/* Decorative elements */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -64,7 +42,7 @@ const CoachProfile = () => {
           >
             <div>
               <h2 className="text-3xl font-bold text-blue-900 mb-2">Meet Your Mentor</h2>
-              <h3 className="text-xl font-semibold text-blue-700 mb-1">Esandoah Beretilla Efuetngong</h3>
+              <h3 className="text-xl font-semibold text-blue-700 mb-1">Esandoah Bertilla Efuetngong</h3>
               <p className="text-lg text-gray-600">Lead Coach & Founder, TETA Academy</p>
             </div>
 
@@ -145,7 +123,7 @@ const CoachProfile = () => {
             <div className="bg-blue-50 p-6 rounded-lg mt-8">
               <h3 className="text-xl font-semibold mb-3">A Holistic Approach</h3>
               <p className="text-gray-700">
-                Coach Beretilla's unique combination of farming expertise, spiritual leadership, 
+                Coach Bertilla's unique combination of farming expertise, spiritual leadership, 
                 and youth mentorship creates a comprehensive approach to personal development. 
                 She believes in nurturing growth in all aspects of life - spiritual, personal, 
                 and professional - just as she nurtures both her family and her crops.
