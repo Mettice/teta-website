@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Book, Users, Heart, Star, Sprout, Award } from 'lucide-react';
+import coach from '../assets/Coach.jpg'
 
 const CoachProfile = () => {
   return (
@@ -14,7 +15,7 @@ const CoachProfile = () => {
           >
             <div className="aspect-[3/4] rounded-lg overflow-hidden">
               <img 
-                src="/assets/Coach.jpg" 
+                src={coach}
                 alt="Esandoah Beretilla Efuetngong" 
                 className="w-full h-full object-cover"
               />
