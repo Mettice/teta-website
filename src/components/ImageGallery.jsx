@@ -1,52 +1,60 @@
 // src/components/ImageGallery.jsx
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 const ImageGallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalImage, setModalImage] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const images = [
     {
-      url: 'https://teta-website-fjoe06crl-dions-projects-0087c2a0.vercel.app/images/kids1.jpg',
+      url: '/images/kids1.jpg',
       title: 'Book Reading Session',
       description: 'Students engaged with the "Undefiled" book'
     },
     {
-      url: 'https://teta-website-fjoe06crl-dions-projects-0087c2a0.vercel.app/images/kids2.jpg',
+      url: '/images/kids2.jpg',
       title: 'TETA Academy Spirit',
       description: 'Students showing their exceptional spirit'
     },
     {
-      url: 'https://teta-website-fjoe06crl-dions-projects-0087c2a0.vercel.app/images/kids3.jpg',
+      url: '/images/kids3.jpg',
       title: 'Youth Activities',
       description: 'Engaging activities for personal development'
     },
     {
-      url: 'https://teta-website-fjoe06crl-dions-projects-0087c2a0.vercel.app/images/kids5.jpg',
+      url: '/images/kids5.jpg',
       title: 'Community Building',
       description: 'Building strong relationships'
     },
     {
-      url: 'https://teta-website-fjoe06crl-dions-projects-0087c2a0.vercel.app/images/kids6.jpg',
+      url: '/images/kids6.jpg',
       title: 'Group Activities',
       description: 'Engaging activities for personal development'
-    },
-    {
-      url: 'https://teta-website-fjoe06crl-dions-projects-0087c2a0.vercel.app/images/kids6.jpg',
-      title: 'Mentorship Session',
-      description: 'Building strong relationships'
     }
   ];
 
   useEffect(() => {
+    // Preload images
+    Promise.all(
+      images.map((image) => {
+        return new Promise((resolve) => {
+          const img = new Image();
+          img.src = image.url;
+          img.onload = resolve;
+        });
+      })
+    ).then(() => setIsLoading(false));
+
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
     }, 5000);
+
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, []);
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
@@ -59,7 +67,21 @@ const ImageGallery = () => {
   const openModal = (index) => {
     setModalImage(index);
     setIsModalOpen(true);
+    document.body.style.overflow = 'hidden';
   };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    document.body.style.overflow = 'unset';
+  };
+
+  if (isLoading) {
+    return (
+      <div className="py-16 flex justify-center items-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
+      </div>
+    );
+  }
 
   return (
     <section className="py-16 bg-gray-50">
@@ -118,12 +140,12 @@ const ImageGallery = () => {
         </div>
 
         {/* Thumbnail Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {images.map((image, index) => (
             <motion.div
               key={index}
               whileHover={{ scale: 1.05 }}
-              className="cursor-pointer aspect-[4/3] rounded-lg overflow-hidden"
+              className="cursor-pointer aspect-square rounded-lg overflow-hidden shadow-md"
               onClick={() => openModal(index)}
             >
               <img
@@ -144,19 +166,22 @@ const ImageGallery = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center"
-            onClick={() => setIsModalOpen(false)}
+            onClick={closeModal}
           >
-            <div className="relative max-w-4xl mx-auto p-4">
+            <div 
+              className="relative max-w-4xl mx-auto p-4"
+              onClick={e => e.stopPropagation()}
+            >
               <img
                 src={images[modalImage].url}
                 alt={images[modalImage].title}
                 className="max-h-[80vh] w-auto mx-auto"
               />
               <button
-                onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 text-white hover:text-gray-300"
+                onClick={closeModal}
+                className="absolute top-4 right-4 text-white hover:text-gray-300 p-2 rounded-full bg-black/50"
               >
-                Close
+                <X size={24} />
               </button>
             </div>
           </motion.div>

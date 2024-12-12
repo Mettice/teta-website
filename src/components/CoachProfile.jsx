@@ -1,7 +1,17 @@
+// src/components/CoachProfile.jsx
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Book, Users, Heart, Star, Sprout, Award } from 'lucide-react';
 
 const CoachProfile = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = '/images/coach.jpg';
+    img.onload = () => setImageLoaded(true);
+  }, []);
+
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto px-4">
@@ -13,10 +23,21 @@ const CoachProfile = () => {
             className="relative"
           >
             <div className="aspect-[3/4] rounded-lg overflow-hidden bg-gray-100">
-              <img 
-                src="https://teta-website-fjoe06crl-dions-projects-0087c2a0.vercel.app/images/Coach.jpg"
+              {!imageLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
+                </div>
+              )}
+              <motion.img 
+                src="/images/coach.jpg"
                 alt="Esandoah Beretilla Efuetngong" 
-                className="w-full h-full object-cover"
+                className={`w-full h-full object-cover transition-opacity duration-300 ${
+                  imageLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5 }}
+                onLoad={() => setImageLoaded(true)}
               />
             </div>
             {/* Decorative elements */}
@@ -42,7 +63,7 @@ const CoachProfile = () => {
           >
             <div>
               <h2 className="text-3xl font-bold text-blue-900 mb-2">Meet Your Mentor</h2>
-              <h3 className="text-xl font-semibold text-blue-700 mb-1">Esandoah Bertilla Efuetngong</h3>
+              <h3 className="text-xl font-semibold text-blue-700 mb-1">Esandoah Beretilla Efuetngong</h3>
               <p className="text-lg text-gray-600">Lead Coach & Founder, TETA Academy</p>
             </div>
 
@@ -71,45 +92,66 @@ const CoachProfile = () => {
 
             {/* Achievements */}
             <div className="grid grid-cols-2 gap-4 mt-6">
-              <div className="bg-white p-4 rounded-lg shadow-sm">
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className="bg-white p-4 rounded-lg shadow-sm"
+              >
                 <Book className="w-6 h-6 text-blue-900 mb-2" />
                 <h3 className="font-semibold">Published Author</h3>
                 <p className="text-sm text-gray-600">"Undefiled" - A guide to spiritual purity</p>
-              </div>
+              </motion.div>
               
-              <div className="bg-white p-4 rounded-lg shadow-sm">
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className="bg-white p-4 rounded-lg shadow-sm"
+              >
                 <Users className="w-6 h-6 text-blue-900 mb-2" />
                 <h3 className="font-semibold">Youth Mentor</h3>
                 <p className="text-sm text-gray-600">5+ years of youth mentorship</p>
-              </div>
+              </motion.div>
               
-              <div className="bg-white p-4 rounded-lg shadow-sm">
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className="bg-white p-4 rounded-lg shadow-sm"
+              >
                 <Heart className="w-6 h-6 text-blue-900 mb-2" />
                 <h3 className="font-semibold">Family Values</h3>
                 <p className="text-sm text-gray-600">Mother & spiritual guide</p>
-              </div>
+              </motion.div>
               
-              <div className="bg-white p-4 rounded-lg shadow-sm">
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className="bg-white p-4 rounded-lg shadow-sm"
+              >
                 <Star className="w-6 h-6 text-blue-900 mb-2" />
                 <h3 className="font-semibold">Christian Leadership</h3>
                 <p className="text-sm text-gray-600">Pastor's wife & ministry leader</p>
-              </div>
+              </motion.div>
 
-              <div className="bg-white p-4 rounded-lg shadow-sm">
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className="bg-white p-4 rounded-lg shadow-sm"
+              >
                 <Sprout className="w-6 h-6 text-blue-900 mb-2" />
                 <h3 className="font-semibold">Agricultural Expert</h3>
                 <p className="text-sm text-gray-600">Innovative farmer & sustainability advocate</p>
-              </div>
+              </motion.div>
               
-              <div className="bg-white p-4 rounded-lg shadow-sm">
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className="bg-white p-4 rounded-lg shadow-sm"
+              >
                 <Award className="w-6 h-6 text-blue-900 mb-2" />
                 <h3 className="font-semibold">Community Leader</h3>
                 <p className="text-sm text-gray-600">Empowering youth & families</p>
-              </div>
+              </motion.div>
             </div>
 
             {/* Featured Book */}
-            <div className="bg-white p-6 rounded-lg shadow-lg mt-8">
+            <motion.div 
+              whileHover={{ scale: 1.02 }}
+              className="bg-white p-6 rounded-lg shadow-lg mt-8"
+            >
               <h3 className="text-xl font-semibold mb-3">Featured Book: "Undefiled"</h3>
               <p className="text-gray-600">
                 A powerful guide for young people navigating relationships and personal purity. 
@@ -117,18 +159,21 @@ const CoachProfile = () => {
                 spiritual integrity before marriage. Drawing from her experience mentoring youth, 
                 Coach Beretilla offers guidance that resonates with today's generation.
               </p>
-            </div>
+            </motion.div>
 
             {/* Additional Background */}
-            <div className="bg-blue-50 p-6 rounded-lg mt-8">
+            <motion.div 
+              whileHover={{ scale: 1.02 }}
+              className="bg-blue-50 p-6 rounded-lg mt-8"
+            >
               <h3 className="text-xl font-semibold mb-3">A Holistic Approach</h3>
               <p className="text-gray-700">
-                Coach Bertilla's unique combination of farming expertise, spiritual leadership, 
+                Coach Beretilla's unique combination of farming expertise, spiritual leadership, 
                 and youth mentorship creates a comprehensive approach to personal development. 
                 She believes in nurturing growth in all aspects of life - spiritual, personal, 
                 and professional - just as she nurtures both her family and her crops.
               </p>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
