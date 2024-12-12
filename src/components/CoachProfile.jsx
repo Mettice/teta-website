@@ -14,7 +14,7 @@ const CoachProfile = () => {
           >
             <div className="aspect-[3/4] rounded-lg overflow-hidden">
               <img 
-                src="/src/assets/coach.jpg" 
+                src="/coach.jpg" 
                 alt="Esandoah Beretilla Efuetngong" 
                 className="w-full h-full object-cover"
               />
