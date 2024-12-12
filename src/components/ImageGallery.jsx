@@ -2,6 +2,11 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import kids1 from '../assets/kids1.jpg'
+import kids2 from '../assets/kids2.jpg'
+import kids from '../assets/kids.jpg'
+import kids5 from '../assets/kids5.jpg'
+import kids6 from '../assets/kids6.jpg'
 
 const ImageGallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -10,32 +15,32 @@ const ImageGallery = () => {
 
   const images = [
     {
-      url: '/src/assets/kids1.jpg',
+      url: kids1,
       title: 'Book Reading Session',
       description: 'Students engaged with the "Undefiled" book'
     },
     {
-      url: '/src/assets/kids2.jpg',
+      url: kids2,
       title: 'TETA Academy Spirit',
       description: 'Students showing their exceptional spirit'
     },
     {
-      url: '/src/assets/kids.jpg',
+      url: kids,
       title: 'Youth Activities',
       description: 'Engaging activities for personal development'
     },
     {
-      url: '/src/assets/kids5.jpg',
+      url: kids5,
       title: 'Community Building',
       description: 'Building strong relationships'
     },
     {
-      url: '/src/assets/kids6.jpg',
+      url: kids6,
       title: 'Group Activities',
       description: 'Engaging activities for personal development'
     },
     {
-      url: '/src/assets/kids6.jpg',
+      url: kids6,
       title: 'Mentorship Session',
       description: 'Building strong relationships'
     }
