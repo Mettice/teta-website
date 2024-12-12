@@ -1,28 +1,59 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Book, Users, Heart, Star, Sprout, Award } from 'lucide-react';
-import coach from '../assets/Coach.jpg'
+import coach from '../assets/Coach.jpg';
 
 const CoachProfile = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    // Preload coach image
+    const img = new Image();
+    img.src = coach;
+    img.onload = () => setImageLoaded(true);
+  }, []);
+
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Coach Image */}
+          {/* Coach Image with loading state */}
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             className="relative"
           >
-            <div className="aspect-[3/4] rounded-lg overflow-hidden">
-              <img 
+            <div className="aspect-[3/4] rounded-lg overflow-hidden bg-gray-100">
+              {!imageLoaded && (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-900"></div>
+                </div>
+              )}
+              <motion.img 
                 src={coach}
                 alt="Esandoah Beretilla Efuetngong" 
-                className="w-full h-full object-cover"
+                className={`w-full h-full object-cover transition-opacity duration-300 ${
+                  imageLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5 }}
+                onLoad={() => setImageLoaded(true)}
               />
             </div>
-            {/* Decorative elements */}
-            <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-blue-100 rounded-lg -z-10"></div>
-            <div className="absolute -top-6 -left-6 w-48 h-48 bg-orange-100 rounded-lg -z-10"></div>
+            {/* Decorative elements with motion */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="absolute -bottom-6 -right-6 w-48 h-48 bg-blue-100 rounded-lg -z-10"
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 }}
+              className="absolute -top-6 -left-6 w-48 h-48 bg-orange-100 rounded-lg -z-10"
+            />
           </motion.div>
 
           {/* Coach Info */}
