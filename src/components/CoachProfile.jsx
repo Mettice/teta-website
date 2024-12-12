@@ -3,12 +3,16 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Book, Users, Heart, Star, Sprout, Award } from 'lucide-react';
 
+const BASE_URL = import.meta.env.PROD 
+  ? '' // Empty for production
+  : '';
+
 const CoachProfile = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     const img = new Image();
-    img.src = '/images/coach.jpg';
+    img.src = `${BASE_URL}/images/Coach.jpg`;
     img.onload = () => setImageLoaded(true);
   }, []);
 
@@ -29,7 +33,7 @@ const CoachProfile = () => {
                 </div>
               )}
               <motion.img 
-                src="/images/coach.jpg"
+                src={`${BASE_URL}/images/Coach.jpg`}
                 alt="Esandoah Beretilla Efuetngong" 
                 className={`w-full h-full object-cover transition-opacity duration-300 ${
                   imageLoaded ? 'opacity-100' : 'opacity-0'

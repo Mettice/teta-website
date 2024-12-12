@@ -10,7 +10,7 @@ const ImageGallery = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const BASE_URL = import.meta.env.PROD 
-    ? 'https://teta-website-fjoe06crl-dions-projects-0087c2a0.vercel.app'
+    ? ''
     : '';
 
   const images = [
