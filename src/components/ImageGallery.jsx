@@ -9,29 +9,33 @@ const ImageGallery = () => {
   const [modalImage, setModalImage] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
+  const BASE_URL = import.meta.env.PROD 
+    ? 'https://teta-website-fjoe06crl-dions-projects-0087c2a0.vercel.app'
+    : '';
+
   const images = [
     {
-      url: '/images/kids1.jpg',
+      url: `${BASE_URL}/images/kids1.jpg`,
       title: 'Book Reading Session',
       description: 'Students engaged with the "Undefiled" book'
     },
     {
-      url: '/images/kids2.jpg',
+      url: `${BASE_URL}/images/kids2.jpg`,
       title: 'TETA Academy Spirit',
       description: 'Students showing their exceptional spirit'
     },
     {
-      url: '/images/kids3.jpg',
+      url: `${BASE_URL}/images/kids3.jpg`,
       title: 'Youth Activities',
       description: 'Engaging activities for personal development'
     },
     {
-      url: '/images/kids5.jpg',
+      url: `${BASE_URL}/images/kids5.jpg`,
       title: 'Community Building',
       description: 'Building strong relationships'
     },
     {
-      url: '/images/kids6.jpg',
+      url: `${BASE_URL}/images/kids6.jpg`,
       title: 'Group Activities',
       description: 'Engaging activities for personal development'
     }
