@@ -20,13 +20,23 @@ const ImageGallery = () => {
       description: 'Students showing their exceptional spirit'
     },
     {
-      url: '/src/assets/kids3.jpg',
+      url: '/src/assets/kids.jpg',
       title: 'Youth Activities',
       description: 'Engaging activities for personal development'
     },
     {
-      url: '/src/assets/kids4.jpg',
+      url: '/src/assets/kids5.jpg',
       title: 'Community Building',
+      description: 'Building strong relationships'
+    },
+    {
+      url: '/src/assets/kids6.jpg',
+      title: 'Group Activities',
+      description: 'Engaging activities for personal development'
+    },
+    {
+      url: '/src/assets/kids6.jpg',
+      title: 'Mentorship Session',
       description: 'Building strong relationships'
     }
 
