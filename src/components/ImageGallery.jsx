@@ -10,32 +10,32 @@ const ImageGallery = () => {
 
   const images = [
     {
-      url: '/kids1.jpg',
+      url: '/assets/kids1.jpg',
       title: 'Book Reading Session',
       description: 'Students engaged with the "Undefiled" book'
     },
     {
-      url: '/kids2.jpg',
+      url: '/assets/kids2.jpg',
       title: 'TETA Academy Spirit',
       description: 'Students showing their exceptional spirit'
     },
     {
-      url: '/kids.jpg',
+      url: '/assets/kids.jpg',
       title: 'Youth Activities',
       description: 'Engaging activities for personal development'
     },
     {
-      url: '/kids5.jpg',
+      url: '/assets/kids5.jpg',
       title: 'Community Building',
       description: 'Building strong relationships'
     },
     {
-      url: '/kids6.jpg',
+      url: '/assets/kids6.jpg',
       title: 'Group Activities',
       description: 'Engaging activities for personal development'
     },
     {
-      url: '/kids6.jpg',
+      url: '/assets/kids6.jpg',
       title: 'Mentorship Session',
       description: 'Building strong relationships'
     }
